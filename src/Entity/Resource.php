@@ -115,7 +115,7 @@ class Resource extends RevisionableContentEntityBase implements ResourceInterfac
       ->setRevisionable(TRUE)
       ->setLabel(t('Status'))
       ->setDefaultValue(TRUE)
-      ->setSetting('on_label', 'Enabled')
+      ->setSetting('on_label', 'Published')
       ->setDisplayOptions('form', [
         'type' => 'boolean_checkbox',
         'settings' => [

@@ -13,7 +13,16 @@
  * @see template_preprocess_resource()
  */
 #}
-<article{{ attributes }}>
+{%
+  set classes = [
+    'resource',
+    bundle|clean_class,
+    view_mode ? view_mode|clean_class,
+    status ? 'is-published' : 'is-unpublished',
+    'clearfix',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
   {% if view_mode != 'full' %}
     {{ title_prefix }}
     {{ title_suffix }}

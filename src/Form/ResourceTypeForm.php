@@ -66,12 +66,11 @@ class ResourceTypeForm extends BundleEntityFormBase {
 
     $status = $entity_type->save();
 
-    $t_args = ['%name' => $entity_type->label()];
     if ($status == SAVED_UPDATED) {
-      $message = $this->t('The resource type %name has been updated.', $t_args);
+      $message = $this->t('The resource type has been updated.');
     }
     elseif ($status == SAVED_NEW) {
-      $message = $this->t('The resource type %name has been added.', $t_args);
+      $message = $this->t('The resource type shas been added.');
     }
     $this->messenger()->addStatus($message);
 

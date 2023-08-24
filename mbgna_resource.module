@@ -32,10 +32,33 @@ function mbgna_resource_theme() {
  *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_resource(array &$variables) {
+  $resource = $variables['elements']['#resource'];
+  if ($resource) {
+    $variables['url'] = $resource->toUrl('canonical')->toString();
+    $variables['bundle'] = $resource->bundle();
+    $variables['status'] = $resource->status->getString();
+  }
+
   $variables['view_mode'] = $variables['elements']['#view_mode'];
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
+}
+
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function mbgna_resource_theme_suggestions_resource(array $variables) {
+  $suggestions = [];
+  $resource = $variables['elements']['#resource'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+  $suggestions[] = 'resource__' . $sanitized_view_mode;
+  $suggestions[] = 'resource__' . $resource->bundle();
+  $suggestions[] = 'resource__' . $resource->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'resource__' . $resource->id();
+  $suggestions[] = 'resource__' . $resource->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
 }
 
 /**

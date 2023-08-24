@@ -1,0 +1,5 @@
+# Custom module library for general purposes.
+mbgna_resource:
+  css:
+    component:
+      css/resource.css: {}

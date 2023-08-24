@@ -18,7 +18,6 @@ class ResourceForm extends ContentEntityForm {
 
     $entity = $this->getEntity();
 
-    $message_arguments = ['%label' => $entity->toLink()->toString()];
     $logger_arguments = [
       '%label' => $entity->label(),
       'link' => $entity->toLink($this->t('View'))->toString(),
@@ -26,12 +25,12 @@ class ResourceForm extends ContentEntityForm {
 
     switch ($result) {
       case SAVED_NEW:
-        $this->messenger()->addStatus($this->t('New resource %label has been created.', $message_arguments));
+        $this->messenger()->addStatus($this->t('New resource has been created.'));
         $this->logger('mbgna_resource')->notice('Created new resource %label', $logger_arguments);
         break;
 
       case SAVED_UPDATED:
-        $this->messenger()->addStatus($this->t('The resource %label has been updated.', $message_arguments));
+        $this->messenger()->addStatus($this->t('The resource has been updated.'));
         $this->logger('mbgna_resource')->notice('Updated resource %label.', $logger_arguments);
         break;
     }

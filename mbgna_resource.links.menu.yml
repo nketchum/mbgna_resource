@@ -4,9 +4,9 @@ entity.resource_type.collection:
   parent: system.admin_structure
   route_name: entity.resource_type.collection
 
-# Directory menu items definition
 entity.resource.collection:
   title: 'Resources'
-  route_name: view.resources.page_1
-  description: 'Browse directory listings'
+  route_name: view.resource.page_1
+  description: 'Browse resource listings'
   parent: system.admin_content
+  
