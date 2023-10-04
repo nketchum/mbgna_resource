@@ -19,7 +19,7 @@ class ResourceTypeForm extends BundleEntityFormBase {
 
     $entity_type = $this->entity;
     if ($this->operation == 'edit') {
-      $form['#title'] = $this->t('Edit %label resource type', ['%label' => $entity_type->label()]);
+      $form['#title'] = $this->t('Edit resource type');
     }
 
     $form['label'] = [

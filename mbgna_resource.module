@@ -45,7 +45,6 @@ function template_preprocess_resource(array &$variables) {
   }
 }
 
-
 /**
  * Implements hook_theme_suggestions_HOOK().
  */
@@ -60,56 +59,3 @@ function mbgna_resource_theme_suggestions_resource(array $variables) {
   $suggestions[] = 'resource__' . $resource->id() . '__' . $sanitized_view_mode;
   return $suggestions;
 }
-
-/**
- * Implements hook_user_cancel().
- */
-// function mbgna_resource_user_cancel($edit, UserInterface $account, $method) {
-//   switch ($method) {
-//     case 'user_cancel_block_unpublish':
-//       // Unpublish resources.
-//       $storage = \Drupal::entityTypeManager()->getStorage('resource');
-//       $resource_ids = $storage->getQuery()
-//         ->condition('uid', $account->id())
-//         ->condition('status', 1)
-//         ->execute();
-//       foreach ($storage->loadMultiple($resource_ids) as $resource) {
-//         $resource->set('status', FALSE);
-//         $resource->save();
-//       }
-//       break;
-
-//     case 'user_cancel_reassign':
-//       // Anonymize resources.
-//       $storage = \Drupal::entityTypeManager()->getStorage('resource');
-//       $resource_ids = $storage->getQuery()
-//         ->condition('uid', $account->id())
-//         ->execute();
-//       foreach ($storage->loadMultiple($resource_ids) as $resource) {
-//         $resource->setOwnerId(0);
-//         $resource->save();
-//       }
-//       break;
-//   }
-// }
-
-/**
- * Implements hook_ENTITY_TYPE_predelete() for user entities.
- */
-// function mbgna_resource_user_predelete(UserInterface $account) {
-//   // Delete resources.
-//   $storage = \Drupal::entityTypeManager()->getStorage('resource');
-//   $resource_ids = $storage->getQuery()
-//     ->condition('uid', $account->id())
-//     ->execute();
-//   $resources = $storage->loadMultiple($resource_ids);
-//   $storage->delete($resources);
-//   // Delete old revisions.
-//   $resource_ids = $storage->getQuery()
-//     ->allRevisions()
-//     ->condition('uid', $account->id())
-//     ->execute();
-//   foreach (array_keys($resource_ids) as $revision_id) {
-//     $storage->deleteRevision($revision_id);
-//   }
-// }
